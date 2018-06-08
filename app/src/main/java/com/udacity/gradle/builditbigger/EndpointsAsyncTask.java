@@ -24,6 +24,8 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> 
     private static final String TAG = "EndpointsAsyncTask";
     private static MyApi myApiService = null;
     private Context context;
+    public static String testResult;
+    private boolean tester;
 
     @Override
     protected String doInBackground(Pair<Context, String>... params) {
@@ -57,9 +59,17 @@ class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> 
 
     @Override
     protected void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(context, MainJokeActivity.class);
-        intent.putExtra("joke", result);
-        context.startActivity(intent);
+        if (tester) {
+            testResult = result;
+        }else {
+            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(context, MainJokeActivity.class);
+            intent.putExtra("joke", result);
+            context.startActivity(intent);
+        }
+    }
+
+    public void setTestResult (boolean value) {
+        tester = value;
     }
 }

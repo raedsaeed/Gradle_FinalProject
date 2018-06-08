@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.udacity.gradle.builditbigger.R;
 
 
@@ -16,7 +18,7 @@ import com.udacity.gradle.builditbigger.R;
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
-
+    private InterstitialAd mInterstitialAd;
     public MainActivityFragment() {
     }
 
@@ -34,6 +36,14 @@ public class MainActivityFragment extends Fragment {
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         mAdView.loadAd(adRequest);
+
+        MobileAds.initialize(container.getContext(),
+                "ca-app-pub-3940256099942544~3347511713");
+        mInterstitialAd = new InterstitialAd(getContext());
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+
         return root;
     }
 }
