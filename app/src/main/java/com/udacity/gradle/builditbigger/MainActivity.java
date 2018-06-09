@@ -46,9 +46,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        Joker joker = new Joker();
         EndpointsAsyncTask task = new EndpointsAsyncTask();
-        task.execute(new Pair<Context, String>(this, joker.getJoke()));
+        task.execute(this);
     }
 
 

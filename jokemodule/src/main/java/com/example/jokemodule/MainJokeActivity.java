@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 public class MainJokeActivity extends AppCompatActivity {
     private static final String TAG = "MainJokeActivity";
+    public static final String EXTRA_KEY_JOKE = "joke";
     TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +18,7 @@ public class MainJokeActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if (intent != null) {
-            String message = intent.getStringExtra("joke");
+            String message = intent.getStringExtra(EXTRA_KEY_JOKE);
             Log.d(TAG, "onCreate: got message");
             textView.setText(message);
         }

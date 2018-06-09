@@ -37,7 +37,7 @@ public class MainActivityFragment extends Fragment {
                 .build();
         mAdView.loadAd(adRequest);
 
-        MobileAds.initialize(container.getContext(),
+        MobileAds.initialize(getActivity(),
                 "ca-app-pub-3940256099942544~3347511713");
         mInterstitialAd = new InterstitialAd(getContext());
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
